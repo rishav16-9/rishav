@@ -1,0 +1,110 @@
+﻿Program 11:
+import java.io.*;
+
+class Demo
+{
+    FileReader fr;
+    FileWriter fw;
+    String t;
+    Demo(String text)
+    {
+        t=text;
+    }
+    void write()throws IOException
+    {
+        fw=new FileWriter("Input.txt");
+        fw.write(t);
+        System.out.println("Write success");
+        fw.close();
+    }
+
+    void read()throws IOException
+    {
+        int data;
+        fr=new FileReader("Input.txt");
+        char res[]=new char[t.length()];
+        int i=0;
+        System.out.println("Data in File:");
+        while((data=fr.read())!=-1)
+        {
+            res[i++]=(char)data;
+        }
+        String rdata=new String(res);
+        System.out.println(rdata);
+        fr.close();
+    }
+}
+public class Eleven {
+    public static void main(String args[])throws FileNotFoundException,IOException
+    {
+        Demo d=new Demo("This statement is written to File");
+        d.write();
+        d.read();
+    }
+}
+
+
+
+Program 12:
+
+import javax.swing.*;
+import javax.swing.tree.DefaultMutableTreeNode;
+class Example {
+    JFrame f;
+
+    Example(){
+        f=new JFrame();
+        String country[]={"India","Aus","U.S.A","England","Newzealand"};
+        JComboBox cb=new JComboBox(country);
+        cb.setBounds(50, 50,90,20);
+        JPanel p1=new JPanel();
+        p1.add(cb);
+        JPanel p2=new JPanel();
+        DefaultListModel<String> l1 = new DefaultListModel<>();
+        l1.addElement("Item1");
+        l1.addElement("Item2");
+        l1.addElement("Item3");
+        l1.addElement("Item4");
+        JList<String> list = new JList<>(l1);
+        list.setBounds(100,100, 75,75);
+        p2.add(list);
+        JPanel p3=new JPanel();
+        DefaultMutableTreeNode style=new DefaultMutableTreeNode("Style");
+        DefaultMutableTreeNode color=new DefaultMutableTreeNode("color");
+        DefaultMutableTreeNode font=new DefaultMutableTreeNode("font");
+        style.add(color);
+        style.add(font);
+        DefaultMutableTreeNode red=new DefaultMutableTreeNode("red");
+        DefaultMutableTreeNode blue=new DefaultMutableTreeNode("blue");
+        DefaultMutableTreeNode black=new DefaultMutableTreeNode("black");
+        DefaultMutableTreeNode green=new DefaultMutableTreeNode("green");
+        color.add(red); color.add(blue); color.add(black); color.add(green);
+        JTree jt=new JTree(style);
+        p3.add(jt);
+        JPanel p4=new JPanel();
+        JRadioButton r1=new JRadioButton("A) Male");
+        JRadioButton r2=new JRadioButton("B) Female");
+        r1.setBounds(75,50,100,30);
+        r2.setBounds(75,100,100,30);
+        ButtonGroup bg=new ButtonGroup();
+        bg.add(r1);bg.add(r2);
+        p4.add(r1);
+        p4.add(r2);
+        JTabbedPane tp=new JTabbedPane();
+        tp.setBounds(50,50,300,300);
+        tp.add("Combobox",p1);
+        tp.add("List",p2);
+        tp.add("Tree",p3);
+        tp.add("RadioButton",p4);
+        f.add(tp);
+        f.setSize(500,500);
+        f.setLayout(null);
+        f.setVisible(true);
+    }
+    }
+
+public class Twelve {
+    public static void main(String[] args) {
+        new Example();
+    }
+}
